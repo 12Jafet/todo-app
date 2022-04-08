@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@zeit/next-less": "^1.0.1",
+    "antd": "^4.19.5",
+    "axios": "^0.26.1",
+    "less": "^2.7.3",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0"

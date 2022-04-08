@@ -1,9 +1,10 @@
-html,
+/* html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: '#344FA1';
 }
 
 a {
@@ -13,4 +14,29 @@ a {
 
 * {
   box-sizing: border-box;
+} */
+html, body {
+  background-color: #F4F6FA!important;
+}
+
+.btn-red {
+  background-color: red;
+  border: none;
+  padding: 6 1 1 6;
+
+}
+
+.btn-red:focus {
+  background-color: rgba(146, 32, 32, 0.984);
+}
+
+.btn-yellow {
+  background-color: yellow;
+  border: none;
+  padding: 6 1 1 6;
+
+}
+
+.btn-yellow:focus {
+  background-color: rgba(146, 32, 32, 0.984);
 }
