@@ -6,14 +6,12 @@ import AuthContext from '../context/AuthContext';
 
 function withAuth(PageComponent) {
     const WithAuthComponent = () => {
-        const [userName, setUserName] = useState();
-        const { setUserName: setUserNameCtx } = useContext(AuthContext);
+        const { userName, setUserName } = useContext(AuthContext);
         const router = useRouter();
 
         useEffect(() => {
             const user = JSON.parse(localStorage.getItem('user'));
             setUserName(user && user.userName);
-            setUserNameCtx(user && user.userName);
         }, []);
 
         useEffect(() => {
