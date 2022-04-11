@@ -1,12 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { useEffect, useState, Fragment } from 'react';
-// import styles from '../styles/Home.module.css'
+import { useEffect, useState, Fragment, useContext } from 'react';
+
+import AuthContext from '../context/AuthContext';
 import useApi from '../hooks/useApi';
 import ToDo from '../components/todo/TODO';
+import withAuth from '../hocs/withAuth';
 
-export default function Home() {
+function Home() {
     const [toDoList, setToDoList] = useState();
+    const { userName } = useContext(AuthContext)
 
     useEffect(() => {
         getToDoList();
@@ -18,7 +19,17 @@ export default function Home() {
         });
 
         const response = await handleGetToDos();
-        setToDoList(response);
+        const sortedResponse = response.reverse().sort((a, b) => {
+            if (a.status > b.status) {
+                return 1;
+            }
+            if (a.status < b.status) {
+                return -1;
+            }
+
+              return 0;
+        });
+        setToDoList(sortedResponse);
     }
 
     const addToDo = async (description) => {
@@ -32,7 +43,6 @@ export default function Home() {
         });
 
         const response = await handleAddToDo();
-        console.log('equisde', response)
         getToDoList();
     }
 
@@ -43,7 +53,6 @@ export default function Home() {
         });
 
         const response = await handleDeleteToDo();
-        console.log('equisde', response)
         getToDoList();
     }
 
@@ -55,7 +64,6 @@ export default function Home() {
         });
 
         const response = await updateToDo();
-        console.log('equisde', response)
         getToDoList();
         return true;
     }
@@ -70,14 +78,13 @@ export default function Home() {
         });
 
         const response = await updateToDo();
-        console.log('equisde', response)
         getToDoList();
         return true;
     }
+
     return (
         <div>
-        {/* <div className={styles.container}> */}
-            <h1>Bienvenido</h1>
+            <h1>{`Bienvenido ${userName}`}</h1>
             <ToDo 
                 toDoList={toDoList}
                 addToDo={addToDo}
@@ -88,3 +95,5 @@ export default function Home() {
         </div>
     )
 }
+
+export default withAuth(Home)

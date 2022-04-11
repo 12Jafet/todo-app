@@ -1,28 +1,36 @@
 import { useState, useContext } from 'react';
+import { useRouter } from 'next/router';
 import { Menu } from 'antd';
-import { HomeOutlined, UserOutlined  } from '@ant-design/icons';
+import { HomeOutlined, UserOutlined } from '@ant-design/icons';
+
 import AuthContext from '../../context/AuthContext';
+import styles from '../../styles/NavBar.module.css';
 
-export default function NavBar() {
+function NavBar() {
     const [current, setCurrent] = useState('home');
-    const context = useContext(AuthContext);
+    const { userName } = useContext(AuthContext)
+    const router = useRouter();
 
-    const handleClick = e => {
-        console.log('click ', e);
+    const handleClickMenu = e => {
         setCurrent(e.key);
     };
 
+    const logOut = () => {
+        localStorage.removeItem('user');
+        router.push('/login');
+    }
+
     return (
-        <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" style={{backgroundColor: '#031926'}} color='#fff'>
-            <Menu.Item key="home" icon={<HomeOutlined />}>
+        router.pathname != '/login' &&
+        <Menu onClick={handleClickMenu} selectedKeys={[current]} mode='horizontal' className={styles.menu} >
+            <Menu.Item key='home' icon={<HomeOutlined size={100} />} onClick={() => router.push('/')}>
                 Home
             </Menu.Item>
-            {
-                context.isLogedIn &&
-                <Menu.Item key="app" icon={<UserOutlined />}>
-                    Cerrar sesión
-                </Menu.Item>
-            }
+            <Menu.Item icon={<UserOutlined />} className={styles.user} onClick={logOut}>
+                {`${userName} | Cerrar sesión`}
+            </Menu.Item>
         </Menu>
     );
 }
+
+export default NavBar;

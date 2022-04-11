@@ -1,10 +1,12 @@
-export default function Button(props) {
-    const { onClick, className, icon, children } = props;
+function Button(props) {
+    const { icon, children, ...rest } = props;
 
     return (
-        <button className={className} onClick={onClick}>
+        <button {...rest}>
             {icon}
             {children}
         </button>
     );
 }
+
+export default Button;

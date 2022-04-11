@@ -1,0 +1,54 @@
+.input {
+  background-color: #fff;
+  font-size: 24px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.addButton {
+  padding: 9px 20px 9px 20px;
+  border: none;
+  color: #fff;
+  background-color: #00b894;
+}
+
+.addButton:hover {
+  background-color: #029b7c;
+}
+
+.addButton:active {
+  background-color: #037861;
+}
+
+.itemContainer {
+  margin-top: 16px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.centerVertical {
+  display: flex !important;
+  align-items: center;
+}
+
+.todoInfo {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  transform: scale(2);
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.todoText {
+  margin: 0;
+  font-size: 24px;
+}
+
+.textLine {
+  text-decoration: line-through;
+}

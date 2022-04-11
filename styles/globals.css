@@ -1,42 +1,72 @@
-/* html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: '#344FA1';
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-} */
 html, body {
-  background-color: #F4F6FA!important;
+  background-color: #F4F6FA !important;
+}
+
+.layout {
+  padding: 40px 140px;
+}
+
+.btn-action-group {
+  display: flex !important;
+}
+
+.btn {
+  padding: 9px 14px 9px 14px;
+  margin-left: 10px;
+  border: none;
+  color: #fff;
 }
 
 .btn-red {
-  background-color: red;
-  border: none;
-  padding: 6 1 1 6;
-
+  background-color: #ff5252;
 }
 
-.btn-red:focus {
-  background-color: rgba(146, 32, 32, 0.984);
+.btn-red:hover {
+  background-color: #ff2c2c;
+}
+
+.btn-red:active {
+  background-color: #ff2c2c;
 }
 
 .btn-yellow {
-  background-color: yellow;
-  border: none;
-  padding: 6 1 1 6;
-
+  background-color: #ffc048;
 }
 
-.btn-yellow:focus {
-  background-color: rgba(146, 32, 32, 0.984);
+.btn-yellow:hover {
+  background-color: #d8a13a;
+}
+
+.btn-yellow:active {
+  background-color: #c79434;
+}
+
+.btn-green {
+  background-color: #00b894;
+}
+
+.btn-green:hover {
+  background-color: #029b7c;
+}
+
+.btn-green:active {
+  background-color: #037861;
+}
+
+@media only screen and (max-width: 768px) {
+  .layout {
+    padding: 40px 70px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .layout {
+    padding: 40px 20px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .layout {
+    padding: 40px 5px;
+  }
 }
