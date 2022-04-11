@@ -6,7 +6,7 @@ import { HomeOutlined, UserOutlined } from '@ant-design/icons';
 import AuthContext from '../../context/AuthContext';
 import styles from '../../styles/NavBar.module.css';
 
-function NavBar() {
+const NavBar = props => {
     const [current, setCurrent] = useState('home');
     const { userName } = useContext(AuthContext)
     const router = useRouter();
@@ -23,7 +23,7 @@ function NavBar() {
     return (
         router.pathname != '/login' &&
         <Menu onClick={handleClickMenu} selectedKeys={[current]} mode='horizontal' className={styles.menu} >
-            <Menu.Item key='home' icon={<HomeOutlined size={100} />} onClick={() => router.push('/')}>
+            <Menu.Item key='home' icon={<HomeOutlined />} onClick={() => router.push('/')}>
                 Home
             </Menu.Item>
             <Menu.Item icon={<UserOutlined />} className={styles.user} onClick={logOut}>

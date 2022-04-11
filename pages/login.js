@@ -11,8 +11,8 @@ function Login() {
     const { setUserName, userName } = useContext(AuthContext);
     const router  = useRouter();
 
-    const handleLogIn = (event) => {
-        event.preventDefault()
+    const handleLogIn = (e) => {
+        e.preventDefault()
         if (userNameInput == '' || !userNameInput) {
             return;
         }
@@ -28,7 +28,11 @@ function Login() {
                 <h1 className={styles.titleForm}>Iniciar sesión</h1>
                 <form onSubmit={handleLogIn}>
                     <label className={styles.label}>Usuario:</label>
-                    <Input value={userNameInput} onChange={e => setUserNameInput(e.target.value)} />
+                    <Input 
+                        value={userNameInput} 
+                        onChange={e => setUserNameInput(e.target.value)} 
+                        onKeyPress={e => e.key === 'Enter' ? handleLogIn(e) : null}
+                    />
                     <div className={styles.btnContainer}>
                         <Button className='btn btn-green'>Ingresar</Button>
                     </div>

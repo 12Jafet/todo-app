@@ -6,7 +6,7 @@ import ToDoItem from './ToDoItem';
 import Button from '../common/Button';
 import styles from '../../styles/ToDo.module.css'
 
-function ToDo(props) {
+const ToDo = props => {
     const { toDoList = [], addToDo, deleteToDo, updateToDo, completed } = props;
     const [value, setValue] = useState('');
 
@@ -24,8 +24,10 @@ function ToDo(props) {
             <Input.Group compact style={{ display: 'flex' }}>
                 <Input
                     className={styles.input}
+                    placeholder='Ingresa un ToDo'
                     value={value}
                     onChange={e => setValue(e.target.value)}
+                    onKeyPress={e => e.key === 'Enter' ? handleAddToDo() : null}
                 />
                 <Button className={styles.addButton} icon={<PlusOutlined />} onClick={handleAddToDo}></Button>
             </Input.Group>

@@ -1,4 +1,4 @@
-function Button(props) {
+const Button = props => {
     const { icon, children, ...rest } = props;
 
     return (

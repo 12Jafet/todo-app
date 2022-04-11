@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { LoadingOutlined } from '@ant-design/icons';
 
+import Loading from "../components/common/Loading";
 import AuthContext from '../context/AuthContext';
 
 function withAuth(PageComponent) {
@@ -22,7 +22,7 @@ function withAuth(PageComponent) {
             }
         }, [userName]);
 
-        return !userName && router.pathname != '/login' ? <LoadingOutlined /> : <PageComponent />
+        return !userName && router.pathname != '/login' ? <Loading/> : <PageComponent />
     }
 
     return WithAuthComponent;

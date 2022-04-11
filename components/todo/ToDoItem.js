@@ -5,18 +5,23 @@ import { EditOutlined, DeleteOutlined, CheckOutlined, CloseOutlined } from '@ant
 import Button from '../common/Button'
 import styles from '../../styles/ToDo.module.css'
 
-function ToDoItem(props) {
+const ToDoItem = props => {
     const { item, deleteToDo, updateToDo, completed } = props
     const [value, setValue] = useState(item.description);
     const [isUpdate, setIsUpdate] = useState(false);
 
     const handleUpdate = () => {
-        updateToDo(item.id, { description: value })
+        updateToDo(item.id, { description: value });
         setIsUpdate(false);
     }
 
+    const handleCancel = () => {
+        setIsUpdate(false);
+        setValue(item.description);
+    }
+
     const onChangeCheckbox = (e) => {
-        completed(item.id, e.target.checked)
+        completed(item.id, e.target.checked);
     }
 
     return (
@@ -38,10 +43,11 @@ function ToDoItem(props) {
                             className={styles.input}
                             value={value}
                             onChange={e => setValue(e.target.value)}
+                            onKeyPress={e => e.key === 'Enter' ? handleUpdate() : null}
                         />
                         <div className='btn-action-group'>
                             <Button className='btn btn-green' onClick={handleUpdate} icon={<CheckOutlined />}></Button>
-                            <Button className='btn btn-red' onClick={() => setIsUpdate(false)} icon={<CloseOutlined />}></Button>
+                            <Button className='btn btn-red' onClick={handleCancel} icon={<CloseOutlined />}></Button>
                         </div>
                     </Input.Group>
             }

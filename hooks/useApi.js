@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function useApi (request) {
+const useApi = (request) => {
     const BASE_URL = 'https://624a33cefd7e30c51c0b458d.mockapi.io/api/v1/';
 
     const handleRequest = async () => {
@@ -21,3 +21,5 @@ export default function useApi (request) {
         handleRequest
     };
 }
+
+export default useApi;
