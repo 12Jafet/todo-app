@@ -65,7 +65,6 @@ function Home() {
 
         const response = await updateToDo();
         getToDoList();
-        return true;
     }
 
     const completed = async (id, status) => {
@@ -79,7 +78,6 @@ function Home() {
 
         const response = await updateToDo();
         getToDoList();
-        return true;
     }
 
     return (
